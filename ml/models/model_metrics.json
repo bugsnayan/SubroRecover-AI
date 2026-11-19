@@ -1,0 +1,75 @@
+{
+  "model_name": "RandomForest_Subro_Priority_Classifier",
+  "training_samples": 144,
+  "test_samples": 36,
+  "classes": [
+    "High",
+    "Low",
+    "Medium"
+  ],
+  "accuracy": 1.0,
+  "precision_weighted": 1.0,
+  "recall_weighted": 1.0,
+  "f1_score_weighted": 1.0,
+  "roc_auc_weighted": 1.0,
+  "confusion_matrix": [
+    [
+      24,
+      0,
+      0
+    ],
+    [
+      0,
+      6,
+      0
+    ],
+    [
+      0,
+      0,
+      6
+    ]
+  ],
+  "feature_importances": [
+    {
+      "feature": "adverse_fault_pct",
+      "importance": 0.298
+    },
+    {
+      "feature": "num_parties",
+      "importance": 0.1731
+    },
+    {
+      "feature": "citations_issued",
+      "importance": 0.1659
+    },
+    {
+      "feature": "claim_type_enc",
+      "importance": 0.1415
+    },
+    {
+      "feature": "has_police_report",
+      "importance": 0.1171
+    },
+    {
+      "feature": "claim_amount",
+      "importance": 0.0306
+    },
+    {
+      "feature": "paid_amount",
+      "importance": 0.0263
+    },
+    {
+      "feature": "incident_state_enc",
+      "importance": 0.0222
+    },
+    {
+      "feature": "deductible_amount",
+      "importance": 0.0178
+    },
+    {
+      "feature": "days_to_report",
+      "importance": 0.0075
+    }
+  ],
+  "data_notice": "Trained on synthetic insurance data modeled on standard US P&C comparative fault distributions."
+}

@@ -1,0 +1,181 @@
+claim_id,claim_amount,paid_amount,deductible_amount,claim_type,incident_state,num_parties,has_police_report,citations_issued,adverse_fault_pct,days_to_report,recovered_amount,recovery_rate,recovery_status,priority_level
+CLM-0001,46820.79,46014.0,250.0,Backing from Driveway,OH,2,1,1,80.0,0,31692.45,0.6888,Fully Recovered,High
+CLM-0002,25274.37,23632.12,1000.0,Rear-end Collision,IL,2,1,1,95.0,1,22043.29,0.9328,Fully Recovered,High
+CLM-0003,27454.41,25497.72,500.0,Multi-Vehicle Chain Collision,IL,2,1,1,90.0,5,19838.55,0.7781,Fully Recovered,High
+CLM-0004,37809.7,36850.92,500.0,Single Vehicle Impact,GA,1,0,0,0.0,5,0.0,0.0,Closed No Recovery,Low
+CLM-0005,40795.44,39616.57,500.0,Multi-Vehicle Chain Collision,AZ,2,1,1,90.0,0,32828.93,0.8287,Fully Recovered,High
+CLM-0006,29767.91,28020.35,250.0,Rear-end Collision,AZ,2,1,1,95.0,1,26203.11,0.9351,Fully Recovered,High
+CLM-0007,18289.52,15715.6,2000.0,Hit and Run Parked Vehicle,IL,2,1,0,70.0,2,9100.63,0.5791,Partially Recovered,Medium
+CLM-0008,47225.61,46358.09,250.0,Multi-Vehicle Chain Collision,TX,2,1,1,90.0,0,40525.77,0.8742,Fully Recovered,High
+CLM-0009,14897.61,14205.55,250.0,Single Vehicle Impact,IL,1,1,0,0.0,1,0.0,0.0,Closed No Recovery,Low
+CLM-0010,30605.94,28565.92,1500.0,Backing from Driveway,FL,2,1,1,80.0,1,22012.01,0.7706,Fully Recovered,High
+CLM-0011,22353.63,18961.21,2000.0,Failure to Yield,OH,2,1,1,90.0,1,14621.26,0.7711,Fully Recovered,High
+CLM-0012,8604.11,5241.63,2000.0,Single Vehicle Impact,GA,1,1,0,0.0,1,0.0,0.0,Closed No Recovery,Low
+CLM-0013,18151.07,16075.52,1000.0,T-bone Intersection Impact,OH,2,1,1,95.0,0,14709.1,0.915,Fully Recovered,High
+CLM-0014,16545.67,13154.35,2000.0,Rear-end Collision,IL,2,1,1,95.0,20,10892.72,0.8281,Fully Recovered,High
+CLM-0015,23840.1,21451.11,1500.0,Multi-Vehicle Chain Collision,FL,2,1,1,90.0,1,18448.14,0.86,Fully Recovered,High
+CLM-0016,17185.32,15379.19,1000.0,Hit and Run Parked Vehicle,IL,2,1,0,70.0,0,6654.63,0.4327,Partially Recovered,Medium
+CLM-0017,26120.32,23467.72,1500.0,Multi-Vehicle Chain Collision,CA,2,1,1,90.0,2,19255.98,0.8205,Fully Recovered,High
+CLM-0018,48197.6,46975.31,1000.0,Rear-end Collision,AZ,2,1,1,95.0,0,43591.18,0.928,Fully Recovered,High
+CLM-0019,46607.9,43213.0,2000.0,Single Vehicle Impact,GA,1,1,0,0.0,10,0.0,0.0,Closed No Recovery,Low
+CLM-0020,34457.82,33305.09,250.0,T-bone Intersection Impact,CA,2,1,1,95.0,2,27283.21,0.8192,Fully Recovered,High
+CLM-0021,12226.11,9519.6,2000.0,Side-swipe Lane Change,TX,2,1,1,85.0,2,7083.64,0.7441,Fully Recovered,High
+CLM-0022,7143.74,5378.66,1000.0,Backing from Driveway,GA,2,1,1,80.0,1,4106.04,0.7634,Fully Recovered,High
+CLM-0023,21371.96,19610.52,500.0,Multi-Vehicle Chain Collision,CA,2,1,1,90.0,0,15099.38,0.77,Fully Recovered,High
+CLM-0024,32097.69,31537.21,250.0,Single Vehicle Impact,IL,1,1,0,0.0,1,0.0,0.0,Closed No Recovery,Low
+CLM-0025,11105.9,9358.89,250.0,Multi-Vehicle Chain Collision,IL,2,1,1,90.0,1,7577.74,0.8097,Fully Recovered,High
+CLM-0026,31846.39,31154.09,250.0,Hit and Run Parked Vehicle,AZ,2,1,0,70.0,2,15569.9,0.4998,Partially Recovered,Medium
+CLM-0027,32347.86,30590.0,500.0,Failure to Yield,IL,2,1,1,90.0,2,25402.62,0.8304,Fully Recovered,High
+CLM-0028,27111.24,25021.13,1000.0,T-bone Intersection Impact,AZ,2,0,1,95.0,1,14361.83,0.574,Partially Recovered,Medium
+CLM-0029,40931.94,39661.15,500.0,Rear-end Collision,FL,2,1,1,95.0,0,36921.21,0.9309,Fully Recovered,High
+CLM-0030,16560.36,13763.74,1500.0,T-bone Intersection Impact,CA,2,1,1,95.0,0,12738.88,0.9255,Fully Recovered,High
+CLM-0031,42760.02,41285.23,250.0,Single Vehicle Impact,TX,1,1,0,0.0,0,0.0,0.0,Closed No Recovery,Low
+CLM-0032,22630.7,20533.54,1500.0,Single Vehicle Impact,FL,1,0,0,0.0,0,0.0,0.0,Closed No Recovery,Low
+CLM-0033,38082.89,35749.73,2000.0,Multi-Vehicle Chain Collision,IL,2,1,1,90.0,0,30459.62,0.852,Fully Recovered,High
+CLM-0034,31858.15,30145.49,500.0,T-bone Intersection Impact,IL,2,1,1,95.0,1,26865.64,0.8912,Fully Recovered,High
+CLM-0035,7977.41,5251.33,1500.0,Rear-end Collision,GA,2,1,1,95.0,0,4249.93,0.8093,Fully Recovered,High
+CLM-0036,48742.15,45862.24,2000.0,Side-swipe Lane Change,FL,2,1,1,85.0,0,38156.6,0.832,Fully Recovered,High
+CLM-0037,21820.68,19925.57,1500.0,Rear-end Collision,TX,2,1,1,95.0,1,17690.77,0.8878,Fully Recovered,High
+CLM-0038,22219.87,19256.45,1500.0,Backing from Driveway,FL,2,1,1,80.0,0,14822.61,0.7697,Fully Recovered,High
+CLM-0039,21662.44,20442.98,250.0,Failure to Yield,CA,2,1,1,90.0,1,15750.18,0.7704,Fully Recovered,High
+CLM-0040,47527.32,46562.2,250.0,Single Vehicle Impact,IL,1,1,0,0.0,2,0.0,0.0,Closed No Recovery,Low
+CLM-0041,41208.33,39479.99,1500.0,Failure to Yield,AZ,2,1,1,90.0,0,32755.33,0.8297,Fully Recovered,High
+CLM-0042,13425.38,11575.33,500.0,Failure to Yield,OH,2,1,1,90.0,0,10412.16,0.8995,Fully Recovered,High
+CLM-0043,23588.99,20173.22,2000.0,T-bone Intersection Impact,CA,2,1,1,95.0,10,18931.08,0.9384,Fully Recovered,High
+CLM-0044,35447.83,34563.68,500.0,Single Vehicle Impact,GA,1,1,0,0.0,0,0.0,0.0,Closed No Recovery,Low
+CLM-0045,11577.37,10478.5,500.0,Single Vehicle Impact,CA,1,0,0,0.0,1,0.0,0.0,Closed No Recovery,Low
+CLM-0046,35634.19,32986.12,1500.0,Side-swipe Lane Change,TX,2,1,1,85.0,2,24547.89,0.7442,Fully Recovered,High
+CLM-0047,48824.9,45353.45,2000.0,Hit and Run Parked Vehicle,GA,2,1,0,70.0,0,23229.81,0.5122,Partially Recovered,Medium
+CLM-0048,12352.21,10272.86,1500.0,Multi-Vehicle Chain Collision,CA,2,1,1,90.0,0,9204.95,0.896,Fully Recovered,High
+CLM-0049,40731.66,39737.44,250.0,T-bone Intersection Impact,GA,2,1,1,95.0,2,35238.44,0.8868,Fully Recovered,High
+CLM-0050,43715.23,42242.71,250.0,Single Vehicle Impact,GA,1,1,0,0.0,1,0.0,0.0,Closed No Recovery,Low
+CLM-0051,20091.83,17582.98,2000.0,Hit and Run Parked Vehicle,FL,2,1,0,70.0,3,8373.74,0.4762,Partially Recovered,Medium
+CLM-0052,22318.69,20854.02,250.0,Side-swipe Lane Change,TX,2,1,1,85.0,2,16898.61,0.8103,Fully Recovered,High
+CLM-0053,44562.65,41348.87,2000.0,Backing from Driveway,FL,2,1,1,80.0,0,30655.29,0.7414,Fully Recovered,High
+CLM-0054,16701.54,15361.8,250.0,Single Vehicle Impact,IL,1,1,0,0.0,1,0.0,0.0,Closed No Recovery,Low
+CLM-0055,16548.04,14303.9,1500.0,Rear-end Collision,TX,2,1,1,95.0,20,12225.72,0.8547,Fully Recovered,High
+CLM-0056,9628.84,7859.06,1500.0,Backing from Driveway,TX,2,1,1,80.0,1,5805.87,0.7387,Fully Recovered,High
+CLM-0057,23795.87,22038.14,1000.0,Failure to Yield,TX,2,1,1,90.0,1,19540.93,0.8867,Fully Recovered,High
+CLM-0058,46002.76,44278.35,1000.0,Single Vehicle Impact,CA,1,0,0,0.0,5,0.0,0.0,Closed No Recovery,Low
+CLM-0059,21213.02,19801.55,500.0,Rear-end Collision,CA,2,1,1,95.0,1,16575.81,0.8371,Fully Recovered,High
+CLM-0060,35438.25,33059.31,1000.0,Multi-Vehicle Chain Collision,GA,2,1,1,90.0,0,27243.9,0.8241,Fully Recovered,High
+CLM-0061,18691.86,18093.88,250.0,Backing from Driveway,AZ,2,1,1,80.0,0,14189.22,0.7842,Fully Recovered,High
+CLM-0062,28411.94,26301.19,1000.0,T-bone Intersection Impact,FL,2,1,1,95.0,0,24241.27,0.9217,Fully Recovered,High
+CLM-0063,18855.67,16880.8,500.0,Multi-Vehicle Chain Collision,TX,2,1,1,90.0,1,13579.22,0.8044,Fully Recovered,High
+CLM-0064,12351.65,9969.07,2000.0,Single Vehicle Impact,AZ,1,1,0,0.0,0,0.0,0.0,Closed No Recovery,Low
+CLM-0065,11474.42,8625.94,2000.0,Multi-Vehicle Chain Collision,TX,2,1,1,90.0,5,6964.39,0.8074,Fully Recovered,High
+CLM-0066,18370.25,15721.37,2000.0,T-bone Intersection Impact,CA,2,1,1,95.0,1,13152.03,0.8366,Fully Recovered,High
+CLM-0067,32111.13,30532.95,500.0,Rear-end Collision,FL,2,1,1,95.0,1,25174.66,0.8245,Fully Recovered,High
+CLM-0068,9877.21,8418.03,500.0,Rear-end Collision,IL,2,1,1,95.0,1,7593.27,0.902,Fully Recovered,High
+CLM-0069,38135.48,36745.83,500.0,Single Vehicle Impact,TX,1,1,0,0.0,0,0.0,0.0,Closed No Recovery,Low
+CLM-0070,8071.46,6246.72,1500.0,Backing from Driveway,OH,2,1,1,80.0,0,4539.74,0.7267,Fully Recovered,High
+CLM-0071,33817.65,30634.9,2000.0,Failure to Yield,TX,2,1,1,90.0,1,23608.46,0.7706,Fully Recovered,High
+CLM-0072,18536.24,16363.45,1000.0,Hit and Run Parked Vehicle,IL,2,1,0,70.0,5,6128.29,0.3745,Partially Recovered,Medium
+CLM-0073,18747.0,17439.75,250.0,Failure to Yield,CA,2,1,1,90.0,1,13803.88,0.7915,Fully Recovered,High
+CLM-0074,43677.33,41156.22,1500.0,Failure to Yield,AZ,2,1,1,90.0,3,34170.9,0.8303,Fully Recovered,High
+CLM-0075,15088.28,13044.62,1500.0,Single Vehicle Impact,FL,1,1,0,0.0,2,0.0,0.0,Closed No Recovery,Low
+CLM-0076,44900.81,43779.53,250.0,Failure to Yield,IL,2,1,1,90.0,0,34247.17,0.7823,Fully Recovered,High
+CLM-0077,44422.21,43031.29,1000.0,Side-swipe Lane Change,CA,2,1,1,85.0,1,31180.98,0.7246,Fully Recovered,High
+CLM-0078,25651.22,24152.05,500.0,Hit and Run Parked Vehicle,OH,2,1,0,70.0,0,12985.0,0.5376,Partially Recovered,Medium
+CLM-0079,21789.16,21093.43,250.0,Failure to Yield,TX,2,1,1,90.0,3,18951.36,0.8984,Fully Recovered,High
+CLM-0080,44459.52,41402.45,2000.0,Single Vehicle Impact,AZ,1,1,0,0.0,2,0.0,0.0,Closed No Recovery,Low
+CLM-0081,21716.61,19986.83,250.0,Single Vehicle Impact,GA,1,1,0,0.0,0,0.0,0.0,Closed No Recovery,Low
+CLM-0082,13159.6,9663.74,2000.0,Single Vehicle Impact,IL,1,1,0,0.0,0,0.0,0.0,Closed No Recovery,Low
+CLM-0083,29771.82,27917.7,1000.0,Backing from Driveway,CA,2,1,1,80.0,1,19295.63,0.6912,Fully Recovered,High
+CLM-0084,25342.87,24183.27,500.0,Single Vehicle Impact,FL,1,1,0,0.0,5,0.0,0.0,Closed No Recovery,Low
+CLM-0085,27642.0,27137.06,250.0,Multi-Vehicle Chain Collision,IL,2,1,1,90.0,2,21445.48,0.7903,Fully Recovered,High
+CLM-0086,33071.02,30395.32,2000.0,Backing from Driveway,FL,2,1,1,80.0,1,22719.18,0.7475,Fully Recovered,High
+CLM-0087,7489.62,5231.66,1000.0,Rear-end Collision,CA,2,1,1,95.0,1,4857.43,0.9285,Fully Recovered,High
+CLM-0088,18812.35,16763.43,1000.0,Failure to Yield,AZ,2,1,1,90.0,0,14932.27,0.8908,Fully Recovered,High
+CLM-0089,16944.4,15429.98,500.0,Hit and Run Parked Vehicle,CA,2,1,0,70.0,0,5400.84,0.35,Partially Recovered,Medium
+CLM-0090,5777.14,2878.43,1500.0,Side-swipe Lane Change,GA,2,1,1,85.0,1,2178.32,0.7568,Fully Recovered,High
+CLM-0091,9813.16,7521.21,1500.0,T-bone Intersection Impact,GA,2,0,1,95.0,0,3773.2,0.5017,Partially Recovered,Medium
+CLM-0092,6809.19,5748.0,250.0,Side-swipe Lane Change,FL,2,0,1,85.0,2,2846.41,0.4952,Partially Recovered,Medium
+CLM-0093,16918.09,15062.55,1500.0,Hit and Run Parked Vehicle,TX,2,1,0,70.0,0,5350.69,0.3552,Partially Recovered,Medium
+CLM-0094,45220.06,43389.17,1000.0,Hit and Run Parked Vehicle,IL,2,1,0,70.0,0,23435.53,0.5401,Partially Recovered,Medium
+CLM-0095,49270.68,46505.92,1500.0,T-bone Intersection Impact,GA,2,1,1,95.0,0,43657.32,0.9387,Fully Recovered,High
+CLM-0096,7187.29,5261.86,1000.0,Multi-Vehicle Chain Collision,AZ,2,1,1,90.0,2,4497.88,0.8548,Fully Recovered,High
+CLM-0097,22909.62,20770.85,1500.0,Failure to Yield,AZ,2,1,1,90.0,0,18194.47,0.876,Fully Recovered,High
+CLM-0098,45280.6,44629.47,250.0,Backing from Driveway,IL,2,1,1,80.0,1,34724.27,0.7781,Fully Recovered,High
+CLM-0099,39323.7,36519.38,1500.0,Hit and Run Parked Vehicle,AZ,2,1,0,70.0,2,17271.72,0.4729,Partially Recovered,Medium
+CLM-0100,26745.6,24697.68,1000.0,Side-swipe Lane Change,GA,2,0,1,85.0,1,11127.04,0.4505,Partially Recovered,Medium
+CLM-0101,43544.4,42028.23,250.0,Rear-end Collision,CA,2,1,1,95.0,3,34583.96,0.8229,Fully Recovered,High
+CLM-0102,21541.5,19821.9,250.0,Backing from Driveway,IL,2,1,1,80.0,0,15417.14,0.7778,Fully Recovered,High
+CLM-0103,19261.97,18051.27,500.0,Rear-end Collision,AZ,2,1,1,95.0,0,14880.93,0.8244,Fully Recovered,High
+CLM-0104,18715.04,17000.28,250.0,Single Vehicle Impact,IL,1,1,0,0.0,0,0.0,0.0,Closed No Recovery,Low
+CLM-0105,26373.18,23828.74,1500.0,Multi-Vehicle Chain Collision,AZ,2,1,1,90.0,2,21250.08,0.8918,Fully Recovered,High
+CLM-0106,41384.1,40128.96,1000.0,Rear-end Collision,GA,2,1,1,95.0,1,34982.47,0.8718,Fully Recovered,High
+CLM-0107,45105.98,43258.67,500.0,Side-swipe Lane Change,IL,2,1,1,85.0,3,31902.76,0.7375,Fully Recovered,High
+CLM-0108,15812.79,14016.55,1000.0,Side-swipe Lane Change,OH,2,1,1,85.0,1,10415.28,0.7431,Fully Recovered,High
+CLM-0109,31794.59,29571.09,1000.0,Backing from Driveway,AZ,2,1,1,80.0,1,22905.24,0.7746,Fully Recovered,High
+CLM-0110,16762.22,14314.53,1500.0,Backing from Driveway,CA,2,1,1,80.0,2,9850.41,0.6881,Fully Recovered,High
+CLM-0111,4870.56,2778.97,1000.0,Backing from Driveway,TX,2,1,1,80.0,0,1900.1,0.6837,Fully Recovered,High
+CLM-0112,29686.1,28479.66,500.0,Hit and Run Parked Vehicle,IL,2,0,0,70.0,2,12341.05,0.4333,Partially Recovered,Medium
+CLM-0113,38673.04,37786.76,500.0,Multi-Vehicle Chain Collision,GA,2,1,1,90.0,1,28984.7,0.7671,Fully Recovered,High
+CLM-0114,19375.08,16991.06,2000.0,Failure to Yield,IL,2,1,1,90.0,0,14300.55,0.8417,Fully Recovered,High
+CLM-0115,17910.56,16622.82,250.0,Failure to Yield,GA,2,1,1,90.0,0,13964.5,0.8401,Fully Recovered,High
+CLM-0116,31879.54,29369.39,2000.0,Failure to Yield,CA,2,0,1,90.0,1,16245.2,0.5531,Partially Recovered,Medium
+CLM-0117,45744.63,42870.4,1500.0,Rear-end Collision,TX,2,1,1,95.0,2,35288.0,0.8231,Fully Recovered,High
+CLM-0118,32365.24,29352.46,2000.0,Backing from Driveway,AZ,2,1,1,80.0,1,21459.13,0.7311,Fully Recovered,High
+CLM-0119,40763.38,39813.25,250.0,Side-swipe Lane Change,AZ,2,1,1,85.0,1,31707.38,0.7964,Fully Recovered,High
+CLM-0120,25199.99,23833.53,500.0,Rear-end Collision,IL,2,1,1,95.0,2,19293.81,0.8095,Fully Recovered,High
+CLM-0121,37429.91,36123.01,250.0,Failure to Yield,CA,2,1,1,90.0,3,32258.35,0.893,Fully Recovered,High
+CLM-0122,25482.52,24093.83,1000.0,T-bone Intersection Impact,TX,2,1,1,95.0,2,19791.2,0.8214,Fully Recovered,High
+CLM-0123,36526.36,35498.9,500.0,Failure to Yield,TX,2,1,1,90.0,0,30880.82,0.8699,Fully Recovered,High
+CLM-0124,16006.5,14249.86,500.0,Hit and Run Parked Vehicle,TX,2,1,0,70.0,20,5119.54,0.3593,Partially Recovered,Medium
+CLM-0125,45107.13,43660.1,500.0,Hit and Run Parked Vehicle,GA,2,1,0,70.0,2,25630.25,0.587,Partially Recovered,Medium
+CLM-0126,8703.44,7357.94,250.0,T-bone Intersection Impact,AZ,2,0,1,95.0,0,3841.42,0.5221,Partially Recovered,Medium
+CLM-0127,36778.7,34409.0,2000.0,Rear-end Collision,TX,2,1,1,95.0,0,29820.89,0.8667,Fully Recovered,High
+CLM-0128,45121.15,44618.24,250.0,Single Vehicle Impact,AZ,1,1,0,0.0,1,0.0,0.0,Closed No Recovery,Low
+CLM-0129,30912.7,30348.27,250.0,Rear-end Collision,IL,2,0,1,95.0,2,20639.63,0.6801,Partially Recovered,Medium
+CLM-0130,46509.84,44581.19,1500.0,Multi-Vehicle Chain Collision,GA,2,0,1,90.0,2,26489.62,0.5942,Partially Recovered,Medium
+CLM-0131,14065.98,11700.6,2000.0,T-bone Intersection Impact,TX,2,1,1,95.0,10,10994.65,0.9397,Fully Recovered,High
+CLM-0132,8000.86,4512.2,2000.0,Side-swipe Lane Change,GA,2,1,1,85.0,1,3493.27,0.7742,Fully Recovered,High
+CLM-0133,4577.55,2562.05,1000.0,Single Vehicle Impact,IL,1,1,0,0.0,2,0.0,0.0,Closed No Recovery,Low
+CLM-0134,11432.87,8797.46,2000.0,Failure to Yield,GA,2,1,1,90.0,2,7194.05,0.8177,Fully Recovered,High
+CLM-0135,17661.6,15055.39,1500.0,Side-swipe Lane Change,FL,2,0,1,85.0,0,9934.01,0.6598,Partially Recovered,Medium
+CLM-0136,48868.61,46667.94,1000.0,Side-swipe Lane Change,IL,2,1,1,85.0,1,39194.32,0.8399,Fully Recovered,High
+CLM-0137,25457.13,23340.85,1500.0,Hit and Run Parked Vehicle,OH,2,1,0,70.0,0,11179.71,0.479,Partially Recovered,Medium
+CLM-0138,43230.22,41150.04,1000.0,Backing from Driveway,GA,2,1,1,80.0,0,32773.67,0.7964,Fully Recovered,High
+CLM-0139,31528.59,29216.69,2000.0,Hit and Run Parked Vehicle,GA,2,0,0,70.0,0,10417.96,0.3566,Partially Recovered,Medium
+CLM-0140,32922.79,31645.26,250.0,Rear-end Collision,IL,2,1,1,95.0,0,27182.2,0.859,Fully Recovered,High
+CLM-0141,33871.94,31572.07,2000.0,Single Vehicle Impact,CA,1,1,0,0.0,0,0.0,0.0,Closed No Recovery,Low
+CLM-0142,14005.6,12560.66,1000.0,Side-swipe Lane Change,GA,2,1,1,85.0,0,9283.62,0.7391,Fully Recovered,High
+CLM-0143,8307.81,7583.36,500.0,Failure to Yield,AZ,2,1,1,90.0,2,6600.62,0.8704,Fully Recovered,High
+CLM-0144,41233.41,39791.19,250.0,T-bone Intersection Impact,FL,2,1,1,95.0,0,33765.95,0.8486,Fully Recovered,High
+CLM-0145,21051.57,20007.54,250.0,Rear-end Collision,AZ,2,1,1,95.0,1,18936.48,0.9465,Fully Recovered,High
+CLM-0146,21647.88,20895.15,250.0,Single Vehicle Impact,GA,1,1,0,0.0,2,0.0,0.0,Closed No Recovery,Low
+CLM-0147,41626.8,40279.22,500.0,Side-swipe Lane Change,CA,2,1,1,85.0,2,32488.21,0.8066,Fully Recovered,High
+CLM-0148,10749.66,8619.22,1000.0,Backing from Driveway,CA,2,1,1,80.0,1,6303.91,0.7314,Fully Recovered,High
+CLM-0149,14617.42,13612.41,500.0,Single Vehicle Impact,TX,1,1,0,0.0,0,0.0,0.0,Closed No Recovery,Low
+CLM-0150,9281.39,6946.52,1500.0,Hit and Run Parked Vehicle,FL,2,1,0,70.0,0,3004.55,0.4325,Partially Recovered,Medium
+CLM-0151,22834.83,21933.32,250.0,Failure to Yield,IL,2,1,1,90.0,1,17993.77,0.8204,Fully Recovered,High
+CLM-0152,16718.69,14645.53,1500.0,Failure to Yield,FL,2,1,1,90.0,2,11369.77,0.7763,Fully Recovered,High
+CLM-0153,36412.52,33061.08,2000.0,Backing from Driveway,CA,2,1,1,80.0,3,24162.81,0.7309,Fully Recovered,High
+CLM-0154,20646.78,19016.41,500.0,T-bone Intersection Impact,TX,2,1,1,95.0,5,16098.35,0.8466,Fully Recovered,High
+CLM-0155,46788.16,44655.62,1500.0,Failure to Yield,CA,2,1,1,90.0,2,39267.46,0.8793,Fully Recovered,High
+CLM-0156,38489.21,35950.33,2000.0,Hit and Run Parked Vehicle,IL,2,0,0,70.0,1,18911.78,0.5261,Partially Recovered,Medium
+CLM-0157,10519.94,7892.31,1500.0,Hit and Run Parked Vehicle,FL,2,1,0,70.0,1,3531.03,0.4474,Partially Recovered,Medium
+CLM-0158,38025.83,35992.74,1500.0,T-bone Intersection Impact,TX,2,1,1,95.0,2,29663.42,0.8242,Fully Recovered,High
+CLM-0159,41905.75,40483.58,250.0,Rear-end Collision,IL,2,1,1,95.0,3,35534.5,0.8778,Fully Recovered,High
+CLM-0160,42686.73,42001.88,250.0,Side-swipe Lane Change,GA,2,1,1,85.0,0,33878.35,0.8066,Fully Recovered,High
+CLM-0161,5724.84,2764.14,1500.0,Multi-Vehicle Chain Collision,AZ,2,1,1,90.0,1,2225.97,0.8053,Fully Recovered,High
+CLM-0162,45104.48,43619.91,500.0,Hit and Run Parked Vehicle,CA,2,1,0,70.0,3,18373.68,0.4212,Partially Recovered,Medium
+CLM-0163,11627.73,9261.6,2000.0,Hit and Run Parked Vehicle,FL,2,1,0,70.0,1,3916.95,0.4229,Partially Recovered,Medium
+CLM-0164,16517.62,14560.88,500.0,Multi-Vehicle Chain Collision,CA,2,0,1,90.0,1,7126.14,0.4894,Partially Recovered,Medium
+CLM-0165,35114.17,34169.48,500.0,Rear-end Collision,GA,2,1,1,95.0,2,31719.09,0.9283,Fully Recovered,High
+CLM-0166,31479.49,28829.09,1500.0,Hit and Run Parked Vehicle,TX,2,1,0,70.0,1,11641.97,0.4038,Partially Recovered,Medium
+CLM-0167,34762.11,32391.6,2000.0,Single Vehicle Impact,AZ,1,1,0,0.0,2,0.0,0.0,Closed No Recovery,Low
+CLM-0168,6364.31,4640.74,1500.0,Multi-Vehicle Chain Collision,IL,2,1,1,90.0,0,4153.26,0.895,Fully Recovered,High
+CLM-0169,39769.71,38088.11,250.0,Failure to Yield,TX,2,1,1,90.0,1,30991.79,0.8137,Fully Recovered,High
+CLM-0170,22435.0,21688.36,250.0,T-bone Intersection Impact,AZ,2,1,1,95.0,2,19617.64,0.9045,Fully Recovered,High
+CLM-0171,21434.26,18159.16,2000.0,Backing from Driveway,CA,2,1,1,80.0,0,13524.8,0.7448,Fully Recovered,High
+CLM-0172,37289.21,35556.17,250.0,Backing from Driveway,TX,2,1,1,80.0,2,24803.5,0.6976,Fully Recovered,High
+CLM-0173,24201.43,21832.35,2000.0,Hit and Run Parked Vehicle,TX,2,1,0,70.0,0,12691.08,0.5813,Partially Recovered,Medium
+CLM-0174,8450.76,7520.3,250.0,Single Vehicle Impact,GA,1,1,0,0.0,3,0.0,0.0,Closed No Recovery,Low
+CLM-0175,6858.58,4533.05,1500.0,Failure to Yield,AZ,2,1,1,90.0,0,3811.12,0.8407,Fully Recovered,High
+CLM-0176,48364.54,45960.16,1500.0,Failure to Yield,GA,2,1,1,90.0,0,36930.02,0.8035,Fully Recovered,High
+CLM-0177,18188.6,16459.14,1000.0,Side-swipe Lane Change,IL,2,1,1,85.0,0,13751.36,0.8355,Fully Recovered,High
+CLM-0178,15628.5,13707.38,1000.0,Backing from Driveway,IL,2,1,1,80.0,1,10703.85,0.7809,Fully Recovered,High
+CLM-0179,29211.04,28120.21,500.0,Backing from Driveway,CA,2,1,1,80.0,2,20997.22,0.7467,Fully Recovered,High
+CLM-0180,44437.42,42390.77,1000.0,Multi-Vehicle Chain Collision,AZ,2,1,1,90.0,0,32639.51,0.77,Fully Recovered,High

@@ -1,0 +1,121 @@
+customer_id,first_name,last_name,email,phone,address,city,state,postal_code,risk_profile
+CUST-0001,Linda,Smith,linda.smith41@example.com,+1-428-342-2679,9035 Oak St,Tampa,FL,33602,Standard
+CUST-0002,Robert,Smith,robert.smith37@example.com,+1-438-717-1434,9295 Cedar St,Austin,TX,78701,Standard
+CUST-0003,Anthony,Davis,anthony.davis85@example.com,+1-484-206-3615,7024 Pine St,Scottsdale,AZ,85251,Preferred
+CUST-0004,Susan,Hernandez,susan.hernandez21@example.com,+1-589-299-6881,5735 Elm St,Los Angeles,CA,90012,Standard
+CUST-0005,Sandra,Moore,sandra.moore58@example.com,+1-280-765-5803,6025 Cedar St,Los Angeles,CA,90012,Standard
+CUST-0006,Robert,Perez,robert.perez47@example.com,+1-281-438-2654,6327 Elm St,Orlando,FL,32801,Standard
+CUST-0007,Lisa,Garcia,lisa.garcia55@example.com,+1-414-886-5374,1269 Maple St,Peoria,IL,61602,Standard
+CUST-0008,Jessica,Garcia,jessica.garcia58@example.com,+1-476-855-4598,5413 Main St,Scottsdale,AZ,85251,Preferred
+CUST-0009,Robert,Hernandez,robert.hernandez44@example.com,+1-267-416-6155,3583 Park St,Phoenix,AZ,85001,Preferred
+CUST-0010,Sandra,Jones,sandra.jones27@example.com,+1-452-962-9830,4404 Washington St,Tampa,FL,33602,Non-Standard
+CUST-0011,Margaret,Lopez,margaret.lopez27@example.com,+1-721-705-2489,871 Oak St,Orlando,FL,32801,Preferred
+CUST-0012,David,Perez,david.perez86@example.com,+1-265-594-7252,9863 Park St,Tucson,AZ,85701,Standard
+CUST-0013,James,Perez,james.perez97@example.com,+1-749-968-5371,5673 Oak St,Los Angeles,CA,90012,Preferred
+CUST-0014,David,Anderson,david.anderson43@example.com,+1-712-980-3927,8417 Oak St,Dallas,TX,75201,Non-Standard
+CUST-0015,Karen,Lee,karen.lee87@example.com,+1-403-356-7126,2746 Main St,Savannah,GA,31401,Standard
+CUST-0016,Ashley,Smith,ashley.smith56@example.com,+1-514-445-1949,4046 Oak St,Los Angeles,CA,90012,Preferred
+CUST-0017,Ashley,Williams,ashley.williams26@example.com,+1-331-875-8787,9107 Maple St,Columbus,OH,43215,Preferred
+CUST-0018,Betty,Miller,betty.miller98@example.com,+1-405-930-6107,6637 Pine St,Columbus,OH,43215,Standard
+CUST-0019,Mark,Brown,mark.brown38@example.com,+1-265-546-1344,9738 Cedar St,Orlando,FL,32801,Standard
+CUST-0020,James,Williams,james.williams39@example.com,+1-269-232-6413,1260 Cedar St,Houston,TX,77002,Preferred
+CUST-0021,Ashley,Miller,ashley.miller26@example.com,+1-940-784-8744,4081 Park St,Columbus,OH,43215,Standard
+CUST-0022,Richard,Brown,richard.brown94@example.com,+1-641-562-7939,6835 Park St,Los Angeles,CA,90012,Non-Standard
+CUST-0023,Patricia,Perez,patricia.perez17@example.com,+1-612-945-6559,1890 Cedar St,Los Angeles,CA,90012,Preferred
+CUST-0024,Mark,Jones,mark.jones33@example.com,+1-485-673-5092,1335 Park St,Tucson,AZ,85701,Standard
+CUST-0025,Michael,Johnson,michael.johnson11@example.com,+1-295-971-4872,2824 Washington St,Columbus,OH,43215,Standard
+CUST-0026,Susan,Gonzalez,susan.gonzalez31@example.com,+1-588-202-7396,4445 Park St,Houston,TX,77002,Preferred
+CUST-0027,Ashley,Jones,ashley.jones47@example.com,+1-422-259-9883,1098 Pine St,Miami,FL,33101,Preferred
+CUST-0028,Donald,Taylor,donald.taylor30@example.com,+1-258-720-2312,3144 Oak St,Savannah,GA,31401,Standard
+CUST-0029,Jessica,Gonzalez,jessica.gonzalez82@example.com,+1-452-792-1651,1443 Washington St,Los Angeles,CA,90012,Standard
+CUST-0030,Christopher,Rodriguez,christopher.rodriguez95@example.com,+1-933-521-4910,4451 Washington St,Miami,FL,33101,Preferred
+CUST-0031,Karen,Anderson,karen.anderson19@example.com,+1-209-669-2638,1300 Cedar St,Naperville,IL,60540,Standard
+CUST-0032,William,Lopez,william.lopez41@example.com,+1-578-491-3584,7279 Elm St,Austin,TX,78701,Standard
+CUST-0033,James,Perez,james.perez48@example.com,+1-879-306-3200,4433 Oak St,Columbus,OH,43215,Non-Standard
+CUST-0034,Elizabeth,Rodriguez,elizabeth.rodriguez87@example.com,+1-415-934-6617,3435 Elm St,Chicago,IL,60601,Standard
+CUST-0035,Thomas,Johnson,thomas.johnson91@example.com,+1-633-483-1722,158 Pine St,Austin,TX,78701,Standard
+CUST-0036,Thomas,Garcia,thomas.garcia80@example.com,+1-922-637-1158,1932 Oak St,Scottsdale,AZ,85251,Non-Standard
+CUST-0037,Elizabeth,Moore,elizabeth.moore57@example.com,+1-796-765-3426,7141 Maple St,Houston,TX,77002,Preferred
+CUST-0038,Lisa,Johnson,lisa.johnson36@example.com,+1-898-455-2684,5894 Washington St,Peoria,IL,61602,Commercial
+CUST-0039,Elizabeth,Davis,elizabeth.davis32@example.com,+1-622-225-3938,5542 Washington St,San Diego,CA,92101,Standard
+CUST-0040,Jessica,Rodriguez,jessica.rodriguez99@example.com,+1-310-591-1634,7811 Cedar St,San Diego,CA,92101,Preferred
+CUST-0041,Sandra,Lopez,sandra.lopez39@example.com,+1-428-224-4164,6628 Pine St,Chicago,IL,60601,Preferred
+CUST-0042,John,Rodriguez,john.rodriguez92@example.com,+1-721-609-9785,5525 Main St,Peoria,IL,61602,Preferred
+CUST-0043,Thomas,Garcia,thomas.garcia14@example.com,+1-311-810-8119,5763 Pine St,Tampa,FL,33602,Standard
+CUST-0044,Linda,Gonzalez,linda.gonzalez42@example.com,+1-245-925-8144,127 Cedar St,Miami,FL,33101,Preferred
+CUST-0045,John,Perez,john.perez89@example.com,+1-521-879-3041,5020 Elm St,Naperville,IL,60540,Standard
+CUST-0046,Christopher,Gonzalez,christopher.gonzalez80@example.com,+1-330-396-7888,6311 Maple St,Chicago,IL,60601,Standard
+CUST-0047,Karen,Gonzalez,karen.gonzalez10@example.com,+1-511-493-4443,7143 Pine St,Columbus,OH,43215,Standard
+CUST-0048,Mark,Perez,mark.perez75@example.com,+1-684-953-3780,1489 Elm St,Miami,FL,33101,Standard
+CUST-0049,Nancy,Williams,nancy.williams96@example.com,+1-517-430-4262,2514 Main St,Orlando,FL,32801,Preferred
+CUST-0050,Donald,Martin,donald.martin68@example.com,+1-624-844-4185,6391 Park St,Austin,TX,78701,Preferred
+CUST-0051,Elizabeth,Lee,elizabeth.lee23@example.com,+1-997-635-4585,2981 Park St,Dallas,TX,75201,Preferred
+CUST-0052,Jessica,Brown,jessica.brown27@example.com,+1-675-883-9702,9257 Pine St,Scottsdale,AZ,85251,Commercial
+CUST-0053,Mark,Martin,mark.martin64@example.com,+1-761-656-3607,7877 Park St,Savannah,GA,31401,Preferred
+CUST-0054,Jessica,Lee,jessica.lee76@example.com,+1-696-841-4919,4599 Park St,Tampa,FL,33602,Preferred
+CUST-0055,Charles,Davis,charles.davis52@example.com,+1-527-753-2320,2367 Maple St,Tampa,FL,33602,Preferred
+CUST-0056,Elizabeth,Thompson,elizabeth.thompson18@example.com,+1-624-617-6421,8990 Park St,Miami,FL,33101,Standard
+CUST-0057,Susan,Wilson,susan.wilson84@example.com,+1-912-220-7232,7914 Main St,Phoenix,AZ,85001,Non-Standard
+CUST-0058,Karen,Gonzalez,karen.gonzalez78@example.com,+1-965-952-9947,9983 Cedar St,Tucson,AZ,85701,Standard
+CUST-0059,Sarah,Wilson,sarah.wilson13@example.com,+1-598-544-7624,2804 Park St,Atlanta,GA,30301,Non-Standard
+CUST-0060,Mary,Gonzalez,mary.gonzalez20@example.com,+1-858-638-3223,7664 Maple St,Dallas,TX,75201,Preferred
+CUST-0061,Matthew,Hernandez,matthew.hernandez68@example.com,+1-534-545-7211,4658 Washington St,Miami,FL,33101,Preferred
+CUST-0062,Jennifer,Thomas,jennifer.thomas79@example.com,+1-253-558-4673,1224 Main St,Dallas,TX,75201,Standard
+CUST-0063,Jessica,Miller,jessica.miller89@example.com,+1-356-444-3068,7858 Oak St,Dallas,TX,75201,Standard
+CUST-0064,Susan,Anderson,susan.anderson57@example.com,+1-371-820-2876,2783 Elm St,Tampa,FL,33602,Preferred
+CUST-0065,Mary,Martinez,mary.martinez60@example.com,+1-932-403-2245,9800 Cedar St,Phoenix,AZ,85001,Preferred
+CUST-0066,Karen,Perez,karen.perez82@example.com,+1-242-555-9728,7118 Pine St,Los Angeles,CA,90012,Preferred
+CUST-0067,Nancy,Smith,nancy.smith72@example.com,+1-308-643-6934,7632 Maple St,Tucson,AZ,85701,Standard
+CUST-0068,Sarah,Martin,sarah.martin71@example.com,+1-676-646-5397,5380 Cedar St,Columbus,OH,43215,Standard
+CUST-0069,Jennifer,Rodriguez,jennifer.rodriguez41@example.com,+1-968-675-7209,5611 Main St,Scottsdale,AZ,85251,Standard
+CUST-0070,Christopher,Garcia,christopher.garcia37@example.com,+1-563-464-6576,4681 Elm St,Atlanta,GA,30301,Standard
+CUST-0071,Richard,Williams,richard.williams62@example.com,+1-700-768-4937,7900 Park St,Orlando,FL,32801,Standard
+CUST-0072,Mary,Williams,mary.williams38@example.com,+1-614-908-4986,5116 Pine St,Chicago,IL,60601,Standard
+CUST-0073,Daniel,Wilson,daniel.wilson52@example.com,+1-560-919-8434,4538 Elm St,Columbus,OH,43215,Preferred
+CUST-0074,Linda,White,linda.white50@example.com,+1-322-960-9779,3133 Cedar St,Miami,FL,33101,Preferred
+CUST-0075,Donald,Rodriguez,donald.rodriguez86@example.com,+1-489-302-4180,4953 Cedar St,Savannah,GA,31401,Preferred
+CUST-0076,Karen,Smith,karen.smith26@example.com,+1-480-246-1893,9166 Elm St,Columbus,OH,43215,Standard
+CUST-0077,William,Lee,william.lee23@example.com,+1-212-787-5658,7790 Park St,Atlanta,GA,30301,Standard
+CUST-0078,Barbara,Johnson,barbara.johnson71@example.com,+1-316-266-7565,8156 Oak St,Tampa,FL,33602,Standard
+CUST-0079,Patricia,Jones,patricia.jones82@example.com,+1-511-287-5066,2040 Washington St,San Francisco,CA,94102,Standard
+CUST-0080,Joseph,Taylor,joseph.taylor67@example.com,+1-653-504-8025,5103 Main St,Phoenix,AZ,85001,Standard
+CUST-0081,Michael,Miller,michael.miller43@example.com,+1-876-283-3573,4029 Maple St,Miami,FL,33101,Standard
+CUST-0082,David,Smith,david.smith67@example.com,+1-905-808-8699,4871 Main St,Tucson,AZ,85701,Preferred
+CUST-0083,Charles,Thompson,charles.thompson19@example.com,+1-903-439-5334,9763 Cedar St,Scottsdale,AZ,85251,Standard
+CUST-0084,Joseph,Lee,joseph.lee44@example.com,+1-345-273-1977,2818 Elm St,San Francisco,CA,94102,Standard
+CUST-0085,Charles,Anderson,charles.anderson69@example.com,+1-905-511-7594,4560 Park St,Los Angeles,CA,90012,Standard
+CUST-0086,Robert,Wilson,robert.wilson87@example.com,+1-456-226-2496,3850 Main St,Naperville,IL,60540,Commercial
+CUST-0087,Sarah,Jackson,sarah.jackson32@example.com,+1-681-731-8245,4657 Maple St,Houston,TX,77002,Commercial
+CUST-0088,Betty,Lee,betty.lee21@example.com,+1-681-556-7690,5560 Pine St,Atlanta,GA,30301,Standard
+CUST-0089,David,Hernandez,david.hernandez98@example.com,+1-707-495-7561,9112 Main St,Tucson,AZ,85701,Standard
+CUST-0090,Christopher,Rodriguez,christopher.rodriguez24@example.com,+1-991-613-9431,118 Park St,Naperville,IL,60540,Standard
+CUST-0091,Richard,Taylor,richard.taylor89@example.com,+1-974-710-8242,945 Cedar St,Peoria,IL,61602,Preferred
+CUST-0092,William,Martinez,william.martinez99@example.com,+1-696-324-1472,4020 Maple St,Scottsdale,AZ,85251,Preferred
+CUST-0093,James,Moore,james.moore21@example.com,+1-430-316-8560,2024 Maple St,Tucson,AZ,85701,Standard
+CUST-0094,Charles,Taylor,charles.taylor63@example.com,+1-694-683-4993,7583 Maple St,Tampa,FL,33602,Preferred
+CUST-0095,William,Williams,william.williams63@example.com,+1-548-719-5377,142 Elm St,Tampa,FL,33602,Standard
+CUST-0096,Ashley,Jones,ashley.jones78@example.com,+1-695-553-6446,9142 Washington St,Scottsdale,AZ,85251,Standard
+CUST-0097,Christopher,Miller,christopher.miller83@example.com,+1-592-439-7730,815 Pine St,Orlando,FL,32801,Standard
+CUST-0098,Matthew,Gonzalez,matthew.gonzalez73@example.com,+1-237-329-9229,9769 Pine St,San Francisco,CA,94102,Non-Standard
+CUST-0099,Mark,Brown,mark.brown68@example.com,+1-215-939-3361,6817 Maple St,Savannah,GA,31401,Preferred
+CUST-0100,Thomas,Hernandez,thomas.hernandez93@example.com,+1-282-536-9742,6326 Pine St,Phoenix,AZ,85001,Standard
+CUST-0101,Ashley,Moore,ashley.moore89@example.com,+1-270-440-5708,3827 Oak St,Houston,TX,77002,Standard
+CUST-0102,Michael,Lee,michael.lee66@example.com,+1-370-910-5906,574 Main St,Los Angeles,CA,90012,Preferred
+CUST-0103,Patricia,Martinez,patricia.martinez57@example.com,+1-641-349-5000,8802 Washington St,Peoria,IL,61602,Standard
+CUST-0104,Barbara,Garcia,barbara.garcia20@example.com,+1-824-591-4945,8253 Maple St,San Diego,CA,92101,Preferred
+CUST-0105,Thomas,Anderson,thomas.anderson95@example.com,+1-209-676-5712,9055 Maple St,Tampa,FL,33602,Preferred
+CUST-0106,Daniel,Jackson,daniel.jackson91@example.com,+1-634-906-5097,7584 Elm St,Chicago,IL,60601,Preferred
+CUST-0107,Matthew,Thomas,matthew.thomas40@example.com,+1-590-785-6881,9517 Elm St,Los Angeles,CA,90012,Commercial
+CUST-0108,Charles,Smith,charles.smith45@example.com,+1-208-779-1803,8238 Elm St,Phoenix,AZ,85001,Standard
+CUST-0109,Joseph,Martin,joseph.martin38@example.com,+1-851-394-5106,2340 Oak St,Peoria,IL,61602,Non-Standard
+CUST-0110,Robert,Martinez,robert.martinez14@example.com,+1-793-573-3153,1576 Elm St,Scottsdale,AZ,85251,Preferred
+CUST-0111,Anthony,Garcia,anthony.garcia26@example.com,+1-752-574-9697,8321 Elm St,Miami,FL,33101,Standard
+CUST-0112,Thomas,Thomas,thomas.thomas53@example.com,+1-317-679-2233,2406 Cedar St,Chicago,IL,60601,Non-Standard
+CUST-0113,Margaret,Moore,margaret.moore21@example.com,+1-604-214-5332,8891 Oak St,Peoria,IL,61602,Standard
+CUST-0114,Thomas,Jackson,thomas.jackson91@example.com,+1-580-310-4830,7824 Main St,Phoenix,AZ,85001,Standard
+CUST-0115,Christopher,Martin,christopher.martin92@example.com,+1-264-850-8606,5051 Washington St,Orlando,FL,32801,Preferred
+CUST-0116,Robert,Johnson,robert.johnson73@example.com,+1-318-299-4846,8907 Maple St,Chicago,IL,60601,Preferred
+CUST-0117,Lisa,Perez,lisa.perez63@example.com,+1-801-960-3531,6897 Oak St,Columbus,OH,43215,Standard
+CUST-0118,Anthony,Rodriguez,anthony.rodriguez98@example.com,+1-579-422-8264,7385 Cedar St,Houston,TX,77002,Non-Standard
+CUST-0119,Michael,Perez,michael.perez79@example.com,+1-860-567-1992,6623 Elm St,Peoria,IL,61602,Preferred
+CUST-0120,Linda,Anderson,linda.anderson94@example.com,+1-417-857-1349,928 Pine St,Austin,TX,78701,Preferred
