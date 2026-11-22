@@ -94,6 +94,36 @@ Registers a new insurance claim file into the system.
 
 ---
 
+### 1.4 `GET /claims/portfolio-3d`
+Returns 3D scatter coordinate point cloud across the entire portfolio for spatial clustering.
+- **X-axis**: Carrier Paid Amount ($)
+- **Y-axis**: Recovery Probability (%)
+- **Z-axis**: Days to Statute of Limitations Deadline
+- **Point Size**: Scaled Paid Exposure
+- **Color**: Priority Tier (High: `#D1603D` Rust, Medium: `#CFA968` Brass, Low: `#2F8F89` Teal)
+
+---
+
+### 1.5 `GET /claims/{claim_id}/graph`
+Constructs the interactive 3D recovery graph network topology:
+- **Core Node**: Central claim with recovery probability percentage ring
+- **Party Nodes**: Insured, adverse drivers, third-party insurance carriers
+- **Evidence Nodes**: Official police crash report, witness recorded statements, scene photographs
+- **Damage Nodes**: Carrier paid indemnity, insured deductible (Make-Whole doctrine)
+- **Edges**: Weighted connections representing liability transfer, evidentiary strength, and financial allocation
+
+---
+
+### 1.6 `GET /claims/{claim_id}/demand-letter`
+Generates a formal, court-ready subrogation demand letter addressed to the adverse insurance carrier with itemized loss ledger and statutory liability rationale.
+
+---
+
+### 1.7 `PUT /claims/{claim_id}/demand-letter`
+Updates demand letter draft text or transitions subrogation status to `Demand Sent`.
+
+---
+
 ## 2. Document & Evidence Ingestion Endpoints
 
 ### 2.1 `POST /claims/{claim_id}/documents`
@@ -157,12 +187,15 @@ Records an authorized human adjuster's governance sign-off or adjustment (Human-
 ## 4. Reports & PDF Export Endpoints
 
 ### 4.1 `GET /reports`
-Lists all generated formal investigation reports.
+Lists all generated formal investigation reports with enriched claim and assessment metadata.
 
 ### 4.2 `GET /reports/{report_id}`
-Retrieves full 14-section report JSON dossier.
+Retrieves full report JSON dossier.
 
-### 4.3 `GET /reports/{report_id}/download`
+### 4.3 `POST /reports/generate`
+Dynamically triggers comprehensive investigation report dossier compilation and ReportLab PDF binary artifact generation for a specified claim.
+
+### 4.4 `GET /reports/{report_id}/download`
 Streams and downloads the compiled, court-ready ReportLab investigation PDF report.
 
 ---
@@ -170,16 +203,34 @@ Streams and downloads the compiled, court-ready ReportLab investigation PDF repo
 ## 5. Analytics & Telemetry Endpoints
 
 ### 5.1 `GET /analytics/overview`
-Returns portfolio recovery analytics, total paid exposures, projected net recovery, and priority distributions.
+Returns executive 6-KPI metrics (Claims Ingested, Paid Exposure, Projected Recovery, Recovered to Date, Recovery Rate, High-Urgency Demands) with sparklines, deltas, and multi-parameter filtering (`date_from`, `date_to`, `incident_type`, `state`, `priority`, `status`).
 
-### 5.2 `GET /pipeline/status`
+### 5.2 `GET /analytics/funnel`
+Returns the 5-stage recovery workflow conversion funnel: Ingested → Assessed → Demand Sent → Negotiating → Recovered.
+
+### 5.3 `GET /analytics/recovery-trends`
+Returns historical monthly time-series of paid exposure, projected recovery, and actual settled recoveries.
+
+### 5.4 `GET /analytics/exposure-by-type`
+Returns exposure and projected recovery grouped by incident classification.
+
+### 5.5 `GET /analytics/geographic`
+Returns state-by-state claim count, exposure, and recovery yields for geographic heat grids.
+
+### 5.6 `GET /analytics/needs-attention`
+Returns top 5 claims requiring immediate investigator action ranked by Recovery Value × Urgency Score.
+
+### 5.7 `POST /assistant/chat`
+RAG-powered conversational assistant querying ChromaDB and claims databases with citations, verification status, suggested questions, and interactive claim deep links.
+
+### 5.8 `GET /pipeline/status`
 Returns ETL execution history, records processed, duration, and data quality constraint audit scores.
 
-### 5.3 `POST /pipeline/run`
+### 5.9 `POST /pipeline/run`
 Triggers on-demand execution of the complete Data Engineering ETL pipeline.
 
-### 5.4 `GET /model/metrics`
+### 5.10 `GET /model/metrics`
 Returns trained Random Forest classifier metrics, test set accuracy, ROC-AUC, confusion matrix, and feature importances.
 
-### 5.5 `GET /health`
+### 5.11 `GET /health`
 Probes database connectivity and returns operational health status.

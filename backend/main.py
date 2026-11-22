@@ -6,9 +6,10 @@ import os
 import sys
 import time
 import logging
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, APIRouter, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 
 # Ensure repository root is in sys.path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -45,6 +46,28 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Frontend dist path
+frontend_dist = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend", "dist"))
+
+# SPA HTML Navigation Middleware (serves index.html when a browser requests any page)
+@app.middleware("http")
+async def spa_html_navigation_middleware(request: Request, call_next):
+    accept = request.headers.get("accept", "")
+    path = request.url.path
+    if (
+        "text/html" in accept
+        and not path.startswith("/api")
+        and not path.startswith("/docs")
+        and not path.startswith("/redoc")
+        and not path.startswith("/openapi.json")
+        and not path.startswith("/assets")
+        and not any(path.endswith(ext) for ext in [".svg", ".png", ".ico", ".js", ".css", ".json", ".map", ".pdf"])
+    ):
+        index_file = os.path.join(frontend_dist, "index.html")
+        if os.path.exists(index_file):
+            return FileResponse(index_file)
+    return await call_next(request)
+
 # Request Timing & Correlation Middleware
 @app.middleware("http")
 async def add_process_time_header(request: Request, call_next):
@@ -62,7 +85,27 @@ def on_startup():
     init_db()
     logger.info("SubroRecover AI Backend service started successfully.")
 
-# Mount Routers
+# Mount API Routers (under /api for frontend client and proxy)
+api_router = APIRouter(prefix="/api")
+api_router.include_router(claims_router)
+api_router.include_router(documents_router)
+api_router.include_router(investigation_router)
+api_router.include_router(reports_router)
+api_router.include_router(analytics_router)
+api_router.include_router(system_router)
+
+@api_router.get("/")
+def api_root():
+    return {
+        "service": "SubroRecover AI Enterprise API",
+        "docs": "/docs",
+        "health": "/api/health",
+        "version": "1.0.0"
+    }
+
+app.include_router(api_router)
+
+# Mount direct routers for backwards compatibility with test suite and direct callers
 app.include_router(claims_router)
 app.include_router(documents_router)
 app.include_router(investigation_router)
@@ -70,14 +113,33 @@ app.include_router(reports_router)
 app.include_router(analytics_router)
 app.include_router(system_router)
 
-@app.get("/")
-def root():
-    return {
-        "message": "SubroRecover AI Enterprise API is running.",
-        "docs": "/docs",
-        "health": "/health",
-        "version": "1.0.0"
-    }
+# Mount Frontend Single Page Application (SPA) if dist bundle exists
+frontend_dist = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend", "dist"))
+if os.path.exists(frontend_dist) and os.path.isdir(os.path.join(frontend_dist, "assets")):
+    app.mount("/assets", StaticFiles(directory=os.path.join(frontend_dist, "assets")), name="assets")
+
+    @app.get("/shield.svg")
+    def shield_icon():
+        return FileResponse(os.path.join(frontend_dist, "shield.svg"))
+
+    @app.get("/{full_path:path}")
+    def serve_frontend_spa(full_path: str):
+        # Exclude reserved API, docs, and health prefixes
+        if full_path.startswith("api") or full_path in ["docs", "redoc", "openapi.json", "health"]:
+            raise HTTPException(status_code=404, detail="Resource not found")
+        index_file = os.path.join(frontend_dist, "index.html")
+        if os.path.exists(index_file):
+            return FileResponse(index_file)
+        return {"message": "SubroRecover AI API is running."}
+else:
+    @app.get("/")
+    def root():
+        return {
+            "message": "SubroRecover AI Enterprise API is running.",
+            "docs": "/docs",
+            "health": "/health",
+            "version": "1.0.0"
+        }
 
 if __name__ == "__main__":
     import uvicorn

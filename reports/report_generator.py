@@ -66,6 +66,16 @@ class NumberedCanvas(canvas.Canvas):
         self.line(54, 48, 558, 48)
         self.restoreState()
 
+def fmt_curr(val: Any) -> str:
+    """Formats amount as en-US currency with whole dollars ($248,218, no stray cents)."""
+    try:
+        if val is None or val == "":
+            return "$0"
+        n = round(float(val))
+        return f"${n:,}"
+    except Exception:
+        return "$0"
+
 def generate_subrogation_pdf(report_dossier: Dict[str, Any], output_path: str = None) -> str:
     """
     Assembles and compiles the 14-section formal investigation report into a PDF file.
@@ -177,11 +187,11 @@ def generate_subrogation_pdf(report_dossier: Dict[str, Any], output_path: str = 
         ],
         [
             Paragraph("<b>Policyholder:</b>", body_style), Paragraph(str(claim_sum.get("policy_holder", "Insured")), body_style),
-            Paragraph("<b>Policy Limit:</b>", body_style), Paragraph(f"${claim_sum.get('coverage_limit', 0):,.2f}", body_style)
+            Paragraph("<b>Policy Limit:</b>", body_style), Paragraph(fmt_curr(claim_sum.get("coverage_limit", 0)), body_style)
         ],
         [
-            Paragraph("<b>Carrier Paid Loss:</b>", body_style), Paragraph(f"${claim_sum.get('paid_loss_amount', 0):,.2f}", body_style),
-            Paragraph("<b>Projected Net Recovery:</b>", body_style), Paragraph(f"<b>${rec.get('net_carrier_recovery', 0):,.2f}</b>", body_bold)
+            Paragraph("<b>Carrier Paid Loss:</b>", body_style), Paragraph(fmt_curr(claim_sum.get("paid_loss_amount", 0)), body_style),
+            Paragraph("<b>Projected Net Recovery:</b>", body_style), Paragraph(f"<b>{fmt_curr(rec.get('net_carrier_recovery', 0))}</b>", body_bold)
         ]
     ]
 
@@ -270,13 +280,13 @@ def generate_subrogation_pdf(report_dossier: Dict[str, Any], output_path: str = 
     story.append(Paragraph("6. FINANCIAL RECOVERY QUANTUM (MAKE-WHOLE ALLOCATION)", h1_style))
     fin_data = [
         [Paragraph("<b>Metric</b>", body_bold), Paragraph("<b>Amount (USD)</b>", body_bold), Paragraph("<b>Accounting Description</b>", body_bold)],
-        [Paragraph("Total Carrier Paid Loss", body_style), Paragraph(f"${claim_sum.get('paid_loss_amount', 0):,.2f}", body_style), Paragraph("Total disbursements paid out by first-party carrier", body_style)],
-        [Paragraph("Insured Deductible Paid", body_style), Paragraph(f"${claim_sum.get('deductible_amount', 0):,.2f}", body_style), Paragraph("Out-of-pocket deductible paid by insured policyholder", body_style)],
+        [Paragraph("Total Carrier Paid Loss", body_style), Paragraph(fmt_curr(claim_sum.get('paid_loss_amount', 0)), body_style), Paragraph("Total disbursements paid out by first-party carrier", body_style)],
+        [Paragraph("Insured Deductible Paid", body_style), Paragraph(fmt_curr(claim_sum.get('deductible_amount', 0)), body_style), Paragraph("Out-of-pocket deductible paid by insured policyholder", body_style)],
         [Paragraph("Adverse Fault Allocation", body_style), Paragraph(f"{liab.get('adverse_fault_pct', 0):.1f}%", body_style), Paragraph(f"Negligence split based on {liab.get('negligence_doctrine', 'Comparative Fault')}", body_style)],
-        [Paragraph("Gross Recovery Potential", body_style), Paragraph(f"${rec.get('gross_recovery_estimate', 0):,.2f}", body_style), Paragraph("Theoretical full third-party liability exposure", body_style)],
-        [Paragraph("Insured Make-Whole Refund", body_style), Paragraph(f"${rec.get('insured_deductible_recovery', 0):,.2f}", body_style), Paragraph("First-dollar refund returned directly to policyholder", body_style)],
-        [Paragraph("Estimated Collection Costs", body_style), Paragraph(f"${rec.get('estimated_collection_cost', 0):,.2f}", body_style), Paragraph("Estimated arbitration and administrative recovery overhead", body_style)],
-        [Paragraph("<b>Net Carrier Recovery</b>", body_bold), Paragraph(f"<b>${rec.get('net_carrier_recovery', 0):,.2f}</b>", body_bold), Paragraph("<b>Estimated net carrier recovery yield</b>", body_bold)]
+        [Paragraph("Gross Recovery Potential", body_style), Paragraph(fmt_curr(rec.get('gross_recovery_estimate', 0)), body_style), Paragraph("Theoretical full third-party liability exposure", body_style)],
+        [Paragraph("Insured Make-Whole Refund", body_style), Paragraph(fmt_curr(rec.get('insured_deductible_recovery', 0)), body_style), Paragraph("First-dollar refund returned directly to policyholder", body_style)],
+        [Paragraph("Estimated Collection Costs", body_style), Paragraph(fmt_curr(rec.get('estimated_collection_cost', 0)), body_style), Paragraph("Estimated arbitration and administrative recovery overhead", body_style)],
+        [Paragraph("<b>Net Carrier Recovery</b>", body_bold), Paragraph(f"<b>{fmt_curr(rec.get('net_carrier_recovery', 0))}</b>", body_bold), Paragraph("<b>Estimated net carrier recovery yield</b>", body_bold)]
     ]
     t_fin = Table(fin_data, colWidths=[150, 100, 254])
     t_fin.setStyle(TableStyle([

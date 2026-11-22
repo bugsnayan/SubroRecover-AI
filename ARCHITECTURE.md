@@ -19,7 +19,7 @@ SubroRecover AI is built as a **Decision-Support and Investigation Acceleration 
 - Contextual Document RAG engine (PyPDF + ChromaDB) for grounded evidentiary fact extraction.
 - LangGraph-orchestrated 6-Agent AI system providing explainable, multi-dimensional claim assessments.
 - FastAPI REST backend serving claims, assessments, telemetry, and reporting endpoints.
-- Streamlit enterprise dashboard delivering an 8-page command center for adjusters and executives.
+- Analyst-grade React + Vite + TypeScript web application with interactive 3D visualizations (Three.js/R3F), TanStack Query, and Zustand state management.
 - ReportLab-powered automated 14-section court-ready Subrogation Investigation PDF generation.
 
 ---
@@ -100,24 +100,24 @@ flowchart TD
         API --> RPT_GEN["reports/report_generator.py (ReportLab PDF)"]
     end
 
-    subgraph PRESENTATION["6. Enterprise Presentation Layer"]
-        ST_APP["Streamlit Enterprise Dashboard (frontend/app.py)"]
-        ST_APP --> API
-        ST_APP --> DB
+    subgraph PRESENTATION["6. Enterprise Presentation Layer (React + Vite + TypeScript)"]
+        WEB_APP["React Single Page Application (frontend/)"]
+        API -->|Mounted at / and /assets| WEB_APP
+        API <-->|REST API via /api| WEB_APP
         
-        subgraph PAGES["8 Dashboard Modules"]
-            P1["1. Executive Overview"]
-            P2["2. Claims Management"]
-            P3["3. AI Investigation Workspace"]
-            P4["4. Recovery Intelligence"]
-            P5["5. Document Intelligence"]
-            P6["6. Investigation Reports"]
-            P7["7. Data Pipeline Monitoring"]
-            P8["8. Model Performance"]
+        subgraph PAGES["8 Dedicated Workspaces"]
+            P1["1. Executive Overview (/): Global filters, 6 KPIs, funnel, cross-filtering charts"]
+            P2["2. Claims Ledger (/claims): Data table, multi-sort, drawer, CSV export"]
+            P3["3. Case Detail (/claims/:id): 7 tabs, live agent timeline, demand letter"]
+            P4["4. 3D Recovery Graph: Orbiting nodes (parties, evidence, damages) + 2D fallback"]
+            P5["5. Portfolio Explorer (/portfolio): 3D scatter bubble field + 2D toggle"]
+            P6["6. AI Assistant (/assistant): Conversational RAG over ChromaDB & SQLite"]
+            P7["7. Investigation Reports (/reports): Dossier ledger, preview, PDF compile"]
+            P8["8. Data Quality & Model (/data-quality): Pipeline telemetry, RF metrics"]
         end
-        ST_APP --- PAGES
+        WEB_APP --- PAGES
         
-        ADJUSTER["Claims Adjuster / Subrogation Specialist"] <--> ST_APP
+        ADJUSTER["Claims Adjuster / Subrogation Specialist"] <--> WEB_APP
     end
 ```
 
@@ -210,11 +210,14 @@ sequenceDiagram
 - `schemas/`: Pydantic validation schemas for API inputs and responses.
 - `services/`: Business services connecting agents, DB, ML, and PDF generator.
 
-### 4.7 Frontend Dashboard (`frontend/`)
-- `app.py`: Streamlit multi-page enterprise dashboard entry point.
-- `pages/`: 8 purpose-built adjuster and management modules with Plotly analytics.
-- `components/`: Reusable enterprise UI cards, tables, badges, and callouts.
-- `assets/`: Custom enterprise CSS styling adhering strictly to corporate design guidelines.
+### 4.7 Frontend Web Application (`frontend/`)
+- `src/App.tsx`: React Router DOM v6 routing engine wrapped in TanStack Query client.
+- `src/pages/`: 8 dedicated analyst workspaces (Overview, Claims, CaseDetail, PortfolioExplorer, Assistant, Reports, DataQuality, Settings).
+- `src/components/3d/`: Three.js / React Three Fiber interactive visualizers (ClaimRecovery3D, Portfolio3D) with responsive 2D canvas fallbacks.
+- `src/components/layout/`: AppShell, collapsible Sidebar with text labels, TopNavbar with Command Palette (`Ctrl+K`).
+- `src/components/common/`: Analyst-grade metric cards, sparklines, tooltips, priority badges, and status badges.
+- `src/stores/`: Zustand global state managers (`filterStore` for cross-filtering, `themeStore` for Deep Navy / Paper Light).
+- `frontend_streamlit/`: Preserved legacy Streamlit prototype archive for historical reference.
 
 ### 4.8 Reporting (`reports/`)
 - `report_generator.py`: Generates official, multi-page Subrogation Investigation Reports via ReportLab with corporate branding, tables, metrics, and human sign-off blocks.

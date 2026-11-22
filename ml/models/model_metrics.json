@@ -32,43 +32,43 @@
   "feature_importances": [
     {
       "feature": "adverse_fault_pct",
-      "importance": 0.298
+      "importance": 0.2896
     },
     {
       "feature": "num_parties",
-      "importance": 0.1731
+      "importance": 0.1877
     },
     {
       "feature": "citations_issued",
-      "importance": 0.1659
+      "importance": 0.1679
     },
     {
       "feature": "claim_type_enc",
-      "importance": 0.1415
+      "importance": 0.1463
     },
     {
       "feature": "has_police_report",
-      "importance": 0.1171
-    },
-    {
-      "feature": "claim_amount",
-      "importance": 0.0306
+      "importance": 0.1236
     },
     {
       "feature": "paid_amount",
-      "importance": 0.0263
+      "importance": 0.0259
+    },
+    {
+      "feature": "claim_amount",
+      "importance": 0.0239
     },
     {
       "feature": "incident_state_enc",
-      "importance": 0.0222
+      "importance": 0.0169
     },
     {
       "feature": "deductible_amount",
-      "importance": 0.0178
+      "importance": 0.01
     },
     {
       "feature": "days_to_report",
-      "importance": 0.0075
+      "importance": 0.0082
     }
   ],
   "data_notice": "Trained on synthetic insurance data modeled on standard US P&C comparative fault distributions."

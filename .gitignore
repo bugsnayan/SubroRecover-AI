@@ -10,6 +10,10 @@ __pycache__/
 .Python
 build/
 develop-eggs/
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
 dist/
 downloads/
 eggs/
@@ -17,7 +21,11 @@ eggs/
 lib/
 lib64/
 parts/
-sdist/
+s# Node / Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+dist/
 var/
 wheels/
 share/python-wheels/
