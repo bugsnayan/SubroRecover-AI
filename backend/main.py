@@ -78,11 +78,28 @@ async def add_process_time_header(request: Request, call_next):
     logger.info(f"{request.method} {request.url.path} responded {response.status_code} in {process_time}ms")
     return response
 
-# Startup Event: Ensure Database Schema is Ready
+# Startup Event: Ensure Database Schema is Ready & Seeded
 @app.on_event("startup")
 def on_startup():
     logger.info("Initializing SubroRecover AI database schema...")
     init_db()
+    
+    # Auto-seed if database is empty (e.g., fresh container or Render cloud deployment)
+    try:
+        from database.connection import engine
+        from sqlalchemy import text
+        with engine.connect() as conn:
+            claim_count = conn.execute(text("SELECT COUNT(*) FROM insurance_claims")).scalar()
+            if not claim_count:
+                logger.info("Empty database detected. Running automated ETL pipeline and deterministic seed...")
+                from data_engineering.pipeline import run_etl_pipeline
+                from scripts.seed_assessments import seed_all_assessments
+                run_etl_pipeline()
+                seed_all_assessments()
+                logger.info("Database auto-seeded successfully with 180 claims.")
+    except Exception as e:
+        logger.warning(f"Database auto-seed check skipped: {e}")
+
     logger.info("SubroRecover AI Backend service started successfully.")
 
 # Mount API Routers (under /api for frontend client and proxy)
