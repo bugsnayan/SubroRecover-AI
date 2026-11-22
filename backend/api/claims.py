@@ -179,13 +179,14 @@ def get_claim_details(claim_id: str):
     """Retrieves comprehensive dossier for a single claim including policy, customer, evidence, and assessment."""
     with engine.connect() as conn:
         claim_row = conn.execute(
-            text("SELECT * FROM insurance_claims WHERE claim_id = :cid"),
+            text("SELECT * FROM insurance_claims WHERE claim_id = :cid OR claim_number = :cid"),
             {"cid": claim_id}
         ).mappings().first()
 
         if not claim_row:
             raise HTTPException(status_code=404, detail=f"Claim '{claim_id}' not found.")
         claim_data = dict(claim_row)
+        real_cid = claim_data["claim_id"]
 
         policy_row = conn.execute(
             text("SELECT * FROM insurance_policies WHERE policy_id = :pid"),
@@ -199,32 +200,32 @@ def get_claim_details(claim_id: str):
 
         rep_row = conn.execute(
             text("SELECT * FROM accident_reports WHERE claim_id = :cid"),
-            {"cid": claim_id}
+            {"cid": real_cid}
         ).mappings().first()
 
         party_rows = conn.execute(
             text("SELECT * FROM involved_parties WHERE claim_id = :cid"),
-            {"cid": claim_id}
+            {"cid": real_cid}
         ).mappings().all()
 
         doc_rows = conn.execute(
             text("SELECT * FROM evidence_documents WHERE claim_id = :cid"),
-            {"cid": claim_id}
+            {"cid": real_cid}
         ).mappings().all()
 
         asm_row = conn.execute(
             text("SELECT * FROM recovery_assessments WHERE claim_id = :cid"),
-            {"cid": claim_id}
+            {"cid": real_cid}
         ).mappings().first()
 
         rev_rows = conn.execute(
             text("SELECT * FROM human_review_records WHERE claim_id = :cid ORDER BY reviewed_at DESC"),
-            {"cid": claim_id}
+            {"cid": real_cid}
         ).mappings().all()
 
         report_row = conn.execute(
             text("SELECT * FROM investigation_reports WHERE claim_id = :cid"),
-            {"cid": claim_id}
+            {"cid": real_cid}
         ).mappings().first()
 
         return {
@@ -252,17 +253,33 @@ def get_claim_recovery_graph(claim_id: str):
     - Weighted relational edges indicating liability transfer, evidence strength, and financial quantum
     """
     with engine.connect() as conn:
-        claim_row = conn.execute(text("SELECT * FROM insurance_claims WHERE claim_id = :cid"), {"cid": claim_id}).mappings().first()
+        claim_row = conn.execute(
+            text("SELECT * FROM insurance_claims WHERE claim_id = :cid OR claim_number = :cid"),
+            {"cid": claim_id}
+        ).mappings().first()
         if not claim_row:
             raise HTTPException(status_code=404, detail=f"Claim '{claim_id}' not found.")
         claim = dict(claim_row)
+        real_cid = claim["claim_id"]
 
-        asm_row = conn.execute(text("SELECT * FROM recovery_assessments WHERE claim_id = :cid"), {"cid": claim_id}).mappings().first()
+        asm_row = conn.execute(
+            text("SELECT * FROM recovery_assessments WHERE claim_id = :cid"),
+            {"cid": real_cid}
+        ).mappings().first()
         assessment = dict(asm_row) if asm_row else {}
 
-        parties = conn.execute(text("SELECT * FROM involved_parties WHERE claim_id = :cid"), {"cid": claim_id}).mappings().all()
-        documents = conn.execute(text("SELECT * FROM evidence_documents WHERE claim_id = :cid"), {"cid": claim_id}).mappings().all()
-        accident = conn.execute(text("SELECT * FROM accident_reports WHERE claim_id = :cid"), {"cid": claim_id}).mappings().first()
+        parties = conn.execute(
+            text("SELECT * FROM involved_parties WHERE claim_id = :cid"),
+            {"cid": real_cid}
+        ).mappings().all()
+        documents = conn.execute(
+            text("SELECT * FROM evidence_documents WHERE claim_id = :cid"),
+            {"cid": real_cid}
+        ).mappings().all()
+        accident = conn.execute(
+            text("SELECT * FROM accident_reports WHERE claim_id = :cid"),
+            {"cid": real_cid}
+        ).mappings().first()
 
     prob = float(assessment.get("recovery_probability") or 0.75)
     adv_fault = float(assessment.get("estimated_adverse_fault_pct") or assessment.get("adverse_fault_pct") or 80.0)
@@ -413,16 +430,29 @@ def get_demand_letter(claim_id: str):
     Generates or retrieves formal subrogation demand letter for adverse insurance carrier.
     """
     with engine.connect() as conn:
-        claim_row = conn.execute(text("SELECT * FROM insurance_claims WHERE claim_id = :cid"), {"cid": claim_id}).mappings().first()
+        claim_row = conn.execute(
+            text("SELECT * FROM insurance_claims WHERE claim_id = :cid OR claim_number = :cid"),
+            {"cid": claim_id}
+        ).mappings().first()
         if not claim_row:
             raise HTTPException(status_code=404, detail=f"Claim '{claim_id}' not found.")
         claim = dict(claim_row)
+        real_cid = claim["claim_id"]
 
-        asm_row = conn.execute(text("SELECT * FROM recovery_assessments WHERE claim_id = :cid"), {"cid": claim_id}).mappings().first()
+        asm_row = conn.execute(
+            text("SELECT * FROM recovery_assessments WHERE claim_id = :cid"),
+            {"cid": real_cid}
+        ).mappings().first()
         asm = dict(asm_row) if asm_row else {}
 
-        parties = conn.execute(text("SELECT * FROM involved_parties WHERE claim_id = :cid"), {"cid": claim_id}).mappings().all()
-        accident = conn.execute(text("SELECT * FROM accident_reports WHERE claim_id = :cid"), {"cid": claim_id}).mappings().first()
+        parties = conn.execute(
+            text("SELECT * FROM involved_parties WHERE claim_id = :cid"),
+            {"cid": real_cid}
+        ).mappings().all()
+        accident = conn.execute(
+            text("SELECT * FROM accident_reports WHERE claim_id = :cid"),
+            {"cid": real_cid}
+        ).mappings().first()
 
     adv_party = next((p for p in parties if "adverse" in str(p.get("party_type", "")).lower()), None)
     carrier_name = adv_party.get("insurance_carrier") if adv_party else "Third-Party Insurance Carrier"
@@ -512,9 +542,13 @@ def update_demand_letter(claim_id: str, payload: DemandLetterUpdate):
     Saves edited demand letter draft text or updates status to 'Sent'.
     """
     with engine.connect() as conn:
-        claim_row = conn.execute(text("SELECT claim_id FROM insurance_claims WHERE claim_id = :cid"), {"cid": claim_id}).fetchone()
+        claim_row = conn.execute(
+            text("SELECT claim_id FROM insurance_claims WHERE claim_id = :cid OR claim_number = :cid"),
+            {"cid": claim_id}
+        ).fetchone()
         if not claim_row:
             raise HTTPException(status_code=404, detail=f"Claim '{claim_id}' not found.")
+        real_cid = claim_row[0]
 
     if payload.status == "Sent":
         with engine.begin() as conn:
@@ -522,10 +556,10 @@ def update_demand_letter(claim_id: str, payload: DemandLetterUpdate):
                 UPDATE insurance_claims
                 SET subrogation_status = 'Demand Sent', updated_at = CURRENT_TIMESTAMP
                 WHERE claim_id = :cid
-            """), {"cid": claim_id})
+            """), {"cid": real_cid})
 
     return {
-        "claim_id": claim_id,
+        "claim_id": real_cid,
         "status": payload.status,
         "message": f"Demand letter successfully updated (Status: {payload.status}).",
         "letter_text": payload.letter_text

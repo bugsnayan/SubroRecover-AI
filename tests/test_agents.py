@@ -77,8 +77,12 @@ def test_individual_agents():
     assert len(state.recommended_actions) > 0
 
 def test_full_workflow():
-    final_state = run_investigation_workflow("CLM-0001")
-    assert final_state.claim_id == "CLM-0001"
-    assert final_state.workflow_status == "COMPLETED"
-    assert len(final_state.agent_logs) == 6
-    assert final_state.net_recovery_estimate > 0
+    try:
+        final_state = run_investigation_workflow("CLM-0001")
+        assert final_state.claim_id == "CLM-0001"
+        assert final_state.workflow_status == "COMPLETED"
+        assert len(final_state.agent_logs) == 6
+        assert final_state.net_recovery_estimate > 0
+    finally:
+        from scripts.seed_assessments import seed_all_assessments
+        seed_all_assessments()

@@ -240,13 +240,15 @@ def seed_all_assessments():
             if existing_rpt:
                 conn.execute(text("""
                     UPDATE investigation_reports
-                    SET executive_summary = :esum,
+                    SET report_title = :rtitle,
+                        executive_summary = :esum,
                         full_report_json = :rjson,
                         is_approved = :appr,
                         updated_at = CURRENT_TIMESTAMP
                     WHERE claim_id = :cid
                 """), {
                     "cid": cid,
+                    "rtitle": f"Subrogation Investigation Report - {cid}",
                     "esum": f"Assessment for {cid} ({item['claim_type_raw']}) assigns {item['adv_fault']:.0f}% liability with ${item['net_rec']:,.2f} projected net recovery.",
                     "rjson": json.dumps(report_data),
                     "appr": plvl == "High"
@@ -254,15 +256,16 @@ def seed_all_assessments():
             else:
                 conn.execute(text("""
                     INSERT INTO investigation_reports (
-                        report_id, claim_id, report_number, executive_summary,
+                        report_id, claim_id, report_number, report_title, executive_summary,
                         full_report_json, is_approved, created_at
                     ) VALUES (
-                        :rid, :cid, :rnum, :esum, :rjson, :appr, CURRENT_TIMESTAMP
+                        :rid, :cid, :rnum, :rtitle, :esum, :rjson, :appr, CURRENT_TIMESTAMP
                     )
                 """), {
                     "rid": f"RPT-{cid}",
                     "cid": cid,
-                    "rnum": f"SR-RPT-{cid}",
+                    "rnum": f"SIR-2026-{cid.replace('CLM-', '')}",
+                    "rtitle": f"Subrogation Investigation Report - {cid}",
                     "esum": f"Assessment for {cid} ({item['claim_type_raw']}) assigns {item['adv_fault']:.0f}% liability with ${item['net_rec']:,.2f} projected net recovery.",
                     "rjson": json.dumps(report_data),
                     "appr": plvl == "High"

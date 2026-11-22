@@ -142,7 +142,7 @@ if os.path.exists(frontend_dist) and os.path.isdir(os.path.join(frontend_dist, "
     @app.get("/{full_path:path}")
     def serve_frontend_spa(full_path: str):
         # Exclude reserved API, docs, and health prefixes
-        if full_path.startswith("api") or full_path in ["docs", "redoc", "openapi.json", "health"]:
+        if full_path.startswith("api") or full_path.startswith("health") or full_path in ["docs", "redoc", "openapi.json"]:
             raise HTTPException(status_code=404, detail="Resource not found")
         index_file = os.path.join(frontend_dist, "index.html")
         if os.path.exists(index_file):

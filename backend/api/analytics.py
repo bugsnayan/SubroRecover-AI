@@ -17,6 +17,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../.
 
 from database.connection import engine
 from backend.schemas.claim import AnalyticsOverviewResponse
+from backend.services.metrics import get_portfolio_kpis, sanitize_param
 
 logger = logging.getLogger("subrorecover.api.analytics")
 router = APIRouter(prefix="/analytics", tags=["Executive Analytics"])
@@ -32,27 +33,34 @@ def build_analytics_filter_sql(
     exclude_priority: bool = False
 ) -> tuple[str, Dict[str, Any]]:
     """Builds parameterized SQL WHERE clause and bindings for analytics queries."""
+    d_from = sanitize_param(date_from)
+    d_to = sanitize_param(date_to)
+    i_type = sanitize_param(incident_type)
+    st = sanitize_param(state)
+    prio = sanitize_param(priority)
+    stat = sanitize_param(status)
+
     where_clauses = ["1=1"]
     params: Dict[str, Any] = {}
 
-    if date_from:
+    if d_from:
         where_clauses.append("c.incident_date >= :date_from")
-        params["date_from"] = date_from
-    if date_to:
+        params["date_from"] = d_from
+    if d_to:
         where_clauses.append("c.incident_date <= :date_to")
-        params["date_to"] = date_to
-    if incident_type:
+        params["date_to"] = d_to
+    if i_type:
         where_clauses.append("c.claim_type = :incident_type")
-        params["incident_type"] = incident_type
-    if state:
+        params["incident_type"] = i_type
+    if st:
         where_clauses.append("c.incident_state = :state")
-        params["state"] = state
-    if priority and not exclude_priority:
+        params["state"] = st
+    if prio and not exclude_priority:
         where_clauses.append("a.priority_level = :priority")
-        params["priority"] = priority
-    if status:
+        params["priority"] = prio
+    if stat:
         where_clauses.append("c.subrogation_status = :status")
-        params["status"] = status
+        params["status"] = stat
 
     return " AND ".join(where_clauses), params
 
@@ -81,27 +89,23 @@ def get_analytics_overview(
     )
 
     with engine.connect() as conn:
-        # Aggregated KPI numbers
-        kpi_row = conn.execute(text(f"""
-            SELECT
-                COUNT(c.claim_id) as total_claims,
-                COALESCE(SUM(c.paid_amount), 0.0) as total_paid,
-                COALESCE(SUM(a.net_recovery_estimate), 0.0) as projected_net,
-                COALESCE(SUM(CASE WHEN c.subrogation_status = 'Closed Recovered' THEN a.net_recovery_estimate ELSE 0.0 END), 0.0) as recovered_to_date,
-                COUNT(CASE WHEN a.priority_level = 'High' THEN 1 END) as high_urgency_demands
-            FROM insurance_claims c
-            LEFT JOIN recovery_assessments a ON c.claim_id = a.claim_id
-            WHERE {filter_sql}
-        """), params).mappings().first()
-
-        total_claims = int(kpi_row["total_claims"])
-        total_paid = float(kpi_row["total_paid"])
-        projected_net = float(kpi_row["projected_net"])
-        recovered_to_date = float(kpi_row["recovered_to_date"])
-        
-        projected_recovery_rate = round((projected_net / total_paid * 100), 1) if total_paid > 0 else 0.0
-        actual_recovery_rate = round((recovered_to_date / total_paid * 100), 1) if total_paid > 0 else 0.0
-        high_urgency = int(kpi_row["high_urgency_demands"])
+        # Aggregated KPI numbers via shared metrics module
+        shared_kpis = get_portfolio_kpis(
+            date_from=date_from,
+            date_to=date_to,
+            incident_type=incident_type,
+            state=state,
+            priority=priority,
+            status=status,
+            conn=conn
+        )
+        total_claims = shared_kpis["total_claims"]
+        total_paid = shared_kpis["total_paid"]
+        projected_net = shared_kpis["projected_recovery"]
+        recovered_to_date = shared_kpis["recovered_to_date"]
+        projected_recovery_rate = shared_kpis["projected_recovery_rate"]
+        actual_recovery_rate = shared_kpis["actual_recovery_rate"]
+        high_urgency = shared_kpis["high_urgency_demands"]
 
         # Real dated monthly sparklines and deltas (July - Dec 2025)
         monthly_rows = conn.execute(text(f"""

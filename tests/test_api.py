@@ -233,3 +233,106 @@ def test_delta_sparkline_direction_concordance():
         assert (mismatched_sparkline[-1] > mismatched_sparkline[-2]) if mismatched_delta > 0 else (mismatched_sparkline[-1] < mismatched_sparkline[-2])
 
 
+def test_claim_specific_assistant_retrieval():
+    """
+    Assert that questions naming a claim ID (CN-2026-00018 style) retrieve
+    that claim's record and evidence documents, returning sources with document,
+    page, and snippet.
+    """
+    res = client.post("/assistant/chat", json={
+        "query": "What evidence supports adverse liability on claim CN-2026-00018?"
+    })
+    assert res.status_code == 200
+    data = res.json()
+    assert "CN-2026-00018" in data["answer"]
+    assert "CN-2026-00018" in data["referenced_claims"]
+
+    # Verify sources list under the answer
+    sources = data.get("sources", [])
+    assert len(sources) > 0, "Expected sources list for claim-specific retrieval"
+    for s in sources:
+        assert "document" in s or "title" in s
+        assert "page" in s
+        assert "snippet" in s
+        assert len(s["snippet"]) > 0
+
+
+def test_assistant_metrics_match_overview():
+    """
+    Assert that portfolio metrics cited in assistant answers come from the same
+    shared metrics module and strictly reconcile with Overview endpoints.
+    """
+    # Fetch overview KPIs
+    res_ov = client.get("/analytics/overview")
+    assert res_ov.status_code == 200
+    ov_data = res_ov.json()
+    ov_kpis = ov_data["kpis"]
+
+    total_paid_str = f"{int(ov_kpis['total_paid_exposure']['value']):,}" # e.g. 4,486,249
+    projected_rec_str = f"{int(ov_kpis['projected_recovery']['value']):,}" # e.g. 775,422 or 775,423
+    high_urgency = ov_kpis["high_urgency_demands"]["value"] # 27
+
+    # Send general portfolio metrics query
+    res_chat = client.post("/assistant/chat", json={
+        "query": "What is our total paid exposure and projected recovery across the portfolio?"
+    })
+    assert res_chat.status_code == 200
+    chat_data = res_chat.json()
+    answer = chat_data["answer"]
+
+    # Assert accurate numbers from shared metrics module dynamically match Overview
+    assert total_paid_str in answer
+    assert projected_rec_str in answer
+    assert f"{high_urgency} claims" in answer
+
+    # Assert legacy ungrounded numbers are absent
+    assert "$3,320,185" not in answer
+    assert "88 claims" not in answer
+
+    # Assert sources list is present
+    assert len(chat_data.get("sources", [])) > 0
+
+
+def test_health_data_endpoint():
+    """
+    Assert that GET /health/data returns real counts of claims, assessments,
+    reports, and ChromaDB vector documents.
+    """
+    res = client.get("/health/data")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["status"] == "HEALTHY"
+    assert data["claims"] == 180
+    assert data["assessments"] == 180
+    assert data["reports"] == 180
+    assert data["vector_documents"] >= 720
+
+    # Also check /api/health/data
+    res_api = client.get("/api/health/data")
+    assert res_api.status_code == 200
+    assert res_api.json()["vector_documents"] >= 720
+
+
+def test_claims_routing_with_cn_format():
+    """
+    Assert that /claims/{id} endpoints accept both CN-2026-xxxxx and CLM-xxxx format.
+    """
+    res1 = client.get("/claims/CN-2026-00018")
+    assert res1.status_code == 200
+    d1 = res1.json()
+    assert d1["claim"]["claim_number"] == "CN-2026-00018"
+    assert len(d1["documents"]) == 4
+
+    res2 = client.get("/claims/CN-2026-00018/graph")
+    assert res2.status_code == 200
+    g = res2.json()
+    assert g["claim_number"] == "CN-2026-00018"
+    assert len(g["nodes"]) > 0
+
+    res3 = client.get("/claims/CN-2026-00018/demand-letter")
+    assert res3.status_code == 200
+    dl = res3.json()
+    assert dl["claim_number"] == "CN-2026-00018"
+
+
+

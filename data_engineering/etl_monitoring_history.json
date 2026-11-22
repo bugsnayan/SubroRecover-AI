@@ -1,5 +1,33 @@
 [
   {
+    "run_id": "ETL-RUN-1795370144",
+    "start_time": "2026-11-22T17:55:44.974777Z",
+    "end_time": "2026-11-22T17:55:45.159277Z",
+    "duration_seconds": 0.18,
+    "status": "SUCCESS",
+    "records_ingested": 1832,
+    "records_cleaned": 0,
+    "records_transformed": 0,
+    "records_loaded": 1652,
+    "validation_score_pct": 100.0,
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "run_id": "ETL-RUN-1795370058",
+    "start_time": "2026-11-22T17:54:18.936195Z",
+    "end_time": "2026-11-22T17:54:19.173767Z",
+    "duration_seconds": 0.24,
+    "status": "SUCCESS",
+    "records_ingested": 1832,
+    "records_cleaned": 0,
+    "records_transformed": 0,
+    "records_loaded": 1652,
+    "validation_score_pct": 100.0,
+    "errors": [],
+    "warnings": []
+  },
+  {
     "run_id": "ETL-RUN-1795110931",
     "start_time": "2026-11-19T17:55:31.155256Z",
     "end_time": "2026-11-19T17:55:31.589385Z",

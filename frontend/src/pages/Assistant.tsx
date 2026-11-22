@@ -15,6 +15,101 @@ import {
 import { api } from '../api/client';
 import { ChatResponse, ChatSource } from '../types';
 
+const formatClaimId = (id: string): string => {
+  if (!id) return id;
+  if (id.startsWith('CLM-')) {
+    const num = id.replace('CLM-', '').padStart(5, '0');
+    return `CN-2026-${num}`;
+  }
+  return id;
+};
+
+const renderInlineMarkdown = (text: string) => {
+  const tokens: (string | React.ReactNode)[] = [];
+  const regex = /(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g;
+  const parts = text.split(regex);
+
+  parts.forEach((part, index) => {
+    if (!part) return;
+    if (part.startsWith('**') && part.endsWith('**')) {
+      tokens.push(
+        <strong key={index} className="font-semibold text-navy-950 dark:text-paper-50">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    } else if (part.startsWith('*') && part.endsWith('*')) {
+      tokens.push(
+        <em key={index} className="italic text-slate-700 dark:text-slate-300">
+          {part.slice(1, -1)}
+        </em>
+      );
+    } else if (part.startsWith('`') && part.endsWith('`')) {
+      tokens.push(
+        <code
+          key={index}
+          className="px-1.5 py-0.5 rounded bg-paper-200/80 dark:bg-navy-900 border border-paper-300 dark:border-navy-700 font-mono text-[11px] text-brass-600 dark:text-brass-400"
+        >
+          {part.slice(1, -1)}
+        </code>
+      );
+    } else {
+      tokens.push(part);
+    }
+  });
+
+  return tokens;
+};
+
+const MarkdownRenderer: React.FC<{ content: string }> = ({ content }) => {
+  const paragraphs = content.split(/\n\n+/);
+
+  return (
+    <div className="space-y-2.5 font-sans">
+      {paragraphs.map((p, pIdx) => {
+        const lines = p.split('\n');
+        const isBulletBlock = lines.some(
+          (l) => l.trim().startsWith('• ') || l.trim().startsWith('- ') || l.trim().startsWith('* ')
+        );
+
+        if (isBulletBlock) {
+          return (
+            <ul key={pIdx} className="space-y-1.5 my-1">
+              {lines.map((line, lIdx) => {
+                const trimmed = line.trim();
+                if (trimmed.startsWith('• ') || trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+                  const bulletText = trimmed.replace(/^[•\-*]\s+/, '');
+                  return (
+                    <li key={lIdx} className="flex items-start gap-2 text-xs leading-relaxed">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brass-500 mt-1.5 flex-shrink-0" />
+                      <span>{renderInlineMarkdown(bulletText)}</span>
+                    </li>
+                  );
+                }
+                return (
+                  <p key={lIdx} className="text-xs leading-relaxed">
+                    {renderInlineMarkdown(line)}
+                  </p>
+                );
+              })}
+            </ul>
+          );
+        }
+
+        return (
+          <p key={pIdx} className="text-xs leading-relaxed">
+            {lines.map((line, lIdx) => (
+              <React.Fragment key={lIdx}>
+                {renderInlineMarkdown(line)}
+                {lIdx < lines.length - 1 && <br />}
+              </React.Fragment>
+            ))}
+          </p>
+        );
+      })}
+    </div>
+  );
+};
+
 interface Message {
   id: string;
   sender: 'user' | 'assistant';
@@ -174,56 +269,66 @@ export const Assistant: React.FC = () => {
                       : 'bg-paper-100 dark:bg-navy-950 border border-paper-300 dark:border-navy-800 text-navy-950 dark:text-paper-100 shadow-sm'
                   }`}
                 >
-                  <p className="whitespace-pre-line font-sans">{m.text}</p>
+                  <MarkdownRenderer content={m.text} />
                 </div>
 
-                {/* Grounded Evidence Citations (Expandable Details) */}
+                {/* Grounded Evidence Citations (Sources list under every answer) */}
                 {m.sources && m.sources.length > 0 && (
-                  <details className="group rounded-xl bg-paper-100/60 dark:bg-navy-900 border border-paper-200 dark:border-navy-800 text-xs overflow-hidden">
-                    <summary className="flex items-center justify-between p-3 cursor-pointer select-none font-semibold text-slate-700 dark:text-slate-300 hover:text-brass-500 transition-colors">
+                  <div className="rounded-xl bg-paper-100/70 dark:bg-navy-900/90 border border-paper-200 dark:border-navy-800 text-xs overflow-hidden shadow-xs">
+                    <div className="flex items-center justify-between px-3.5 py-2.5 bg-paper-200/50 dark:bg-navy-950/60 border-b border-paper-200 dark:border-navy-800/80 font-semibold text-slate-700 dark:text-slate-300">
                       <div className="flex items-center gap-1.5 font-mono text-[11px]">
                         <FileText className="w-3.5 h-3.5 text-brass-500" />
                         <span>Sources ({m.sources.length})</span>
                       </div>
-                      <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-open:rotate-90 transition-transform" />
-                    </summary>
-                    <div className="p-3 pt-0 space-y-2">
+                      <span className="text-[10px] font-mono text-teal-600 dark:text-teal-400 bg-teal-500/10 px-2 py-0.5 rounded border border-teal-500/20">
+                        Indexed Documents
+                      </span>
+                    </div>
+                    <div className="p-3 space-y-2">
                       {m.sources.map((s, sIdx) => {
                         const docTitle = s.title || (s as any).document || 'Accident Incident Dossier';
+                        const docClaim = s.claim_id ? formatClaimId(s.claim_id) : undefined;
                         return (
                           <div
                             key={sIdx}
-                            className="p-2.5 rounded-lg bg-paper-200/50 dark:bg-navy-950 border border-paper-300 dark:border-navy-800/80 text-[11px] space-y-1"
+                            className="p-2.5 rounded-lg bg-paper-50 dark:bg-navy-950 border border-paper-200 dark:border-navy-800/80 text-[11px] space-y-1.5"
                           >
-                            <div className="flex items-center justify-between font-semibold text-navy-950 dark:text-paper-200">
-                              <span className="font-sans">{docTitle}</span>
-                              <span className="font-mono text-slate-400 text-[10px]">
-                                Page {s.page}
+                            <div className="flex items-center justify-between font-semibold text-navy-950 dark:text-paper-100">
+                              <span className="font-sans flex items-center gap-1.5">
+                                <FileText className="w-3 h-3 text-brass-500" />
+                                {docTitle}
                               </span>
+                              <div className="flex items-center gap-2 font-mono text-[10px] text-slate-400">
+                                {docClaim && <span className="text-brass-500">{docClaim}</span>}
+                                <span>Page {s.page || 1}</span>
+                              </div>
                             </div>
-                            <p className="italic font-sans text-slate-600 dark:text-slate-300 line-clamp-3">
+                            <p className="italic font-sans text-slate-600 dark:text-slate-300 leading-relaxed pl-4 border-l-2 border-brass-500/40">
                               "{s.snippet}"
                             </p>
                           </div>
                         );
                       })}
                     </div>
-                  </details>
+                  </div>
                 )}
 
                 {/* Open Claim Buttons */}
                 {m.referencedClaims && m.referencedClaims.length > 0 && (
                   <div className="flex flex-wrap items-center gap-2 pt-0.5">
-                    {m.referencedClaims.map((cid) => (
-                      <button
-                        key={cid}
-                        onClick={() => navigate(`/claims/${cid}`)}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brass-500/10 hover:bg-brass-500/20 text-brass-600 dark:text-brass-400 border border-brass-500/30 text-xs font-mono font-semibold transition-all shadow-sm"
-                      >
-                        <span>Open claim {cid}</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </button>
-                    ))}
+                    {m.referencedClaims.map((cid) => {
+                      const cleanId = formatClaimId(cid);
+                      return (
+                        <button
+                          key={cleanId}
+                          onClick={() => navigate(`/claims/${cleanId}`)}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brass-500/10 hover:bg-brass-500/20 text-brass-600 dark:text-brass-400 border border-brass-500/30 text-xs font-mono font-semibold transition-all shadow-sm cursor-pointer"
+                        >
+                          <span>Open claim {cleanId}</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </button>
+                      );
+                    })}
                   </div>
                 )}
 
