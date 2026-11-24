@@ -308,6 +308,7 @@ SubroRecover-AI/
 │   └── test_rag.py
 │
 └── docs/                                # Technical Documentation
+    ├── RESEARCH_PAPER.md               # Formal Academic Paper & Architecture Specification
     ├── DATA_DICTIONARY.md
     ├── API_DOCUMENTATION.md
     ├── AGENT_DOCUMENTATION.md
